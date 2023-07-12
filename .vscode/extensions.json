@@ -1,0 +1,16 @@
+{
+    "recommendations": [
+        "dracula-theme.theme-dracula",
+        "steoates.autoimport",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "zhuangtongfa.material-theme",
+        "pkief.material-icon-theme",
+        "esbenp.prettier-vscode",
+        "dsznajder.es7-react-js-snippets",
+        "alefragnani.project-manager",
+        "tabnine.tabnine-vscode",
+        "visualstudioexptteam.vscodeintellicode",
+        "chakrounanas.turbo-console-log"
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "prettier.bracketSameLine": true,
+    "prettier.proseWrap": "preserve",
+    "prettier.htmlWhitespaceSensitivity": "ignore",
+    "editor.fontFamily": "FiraCode-Regular",
+    "editor.fontSize": 16,
+    "prettier.trailingComma": "all",
+    "prettier.quoteProps": "consistent",
+    "prettier.printWidth": 100
+}
