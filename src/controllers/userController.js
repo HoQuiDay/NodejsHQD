@@ -46,7 +46,7 @@ let handleEditUser = async (req, res) => {
   return res.status(200).json(message);
 };
 let handleDeleteUser = async (req, res) => {
-  let userId = req.query.id;
+  let userId = req.body.id;
   let message = await userService.deleteUser(userId);
   return res.status(200).json(message);
 };

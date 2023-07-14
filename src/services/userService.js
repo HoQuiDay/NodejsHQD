@@ -89,25 +89,26 @@ let createUser = (user) => {
           errorMessage: "Email already exists",
         });
       } else {
-        if (!user.email || !user.password || !user.phonenumber || !user.roleId) {
+        if (!user.email || !user.password || !user.lastName || !user.firstName || !user.address) {
           resolve({ errorCode: 2, errorMessage: "Missing required fields" });
+        } else {
+          let hashPasswordFromBcrypt = await hashUserPassword(user.password);
+          await db.User.create({
+            email: user.email,
+            password: hashPasswordFromBcrypt,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            address: user.address,
+            gender: user.gender === "1" ? true : false,
+            roleId: user.roleId,
+            phonenumber: user.phonenumber,
+          });
+          resolve({
+            errorCode: 0,
+            errorMessage: "User created successfully",
+          });
         }
-        let hashPasswordFromBcrypt = await hashUserPassword(user.password);
-        await db.User.create({
-          email: user.email,
-          password: hashPasswordFromBcrypt,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          address: user.address,
-          gender: user.gender === "1" ? true : false,
-          roleId: user.roleId,
-          phonenumber: user.phonenumber,
-        });
       }
-      resolve({
-        errorCode: 0,
-        errorMessage: "User created successfully",
-      });
     } catch (error) {
       reject(error);
     }
@@ -158,20 +159,20 @@ let editUser = (data) => {
     }
   });
 };
-let deleteUser = (idUser) => {
+let deleteUser = (userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      if (!idUser) {
+      if (!userId) {
         resolve({
           errorCode: 1,
           errorMessage: "Missing required fields",
         });
       } else {
-        let checkId = await db.User.findOne({ where: { id: idUser } });
+        let checkId = await db.User.findOne({ where: { id: userId } });
         if (checkId) {
           await db.User.destroy({
             where: {
-              id: idUser,
+              id: userId,
             },
           });
           resolve({

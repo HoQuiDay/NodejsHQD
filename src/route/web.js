@@ -14,7 +14,7 @@ let initRebRouters = (app) => {
   router.get("/api/get-all-user", userController.handleGetAllUsers);
   router.post("/api/create-user", userController.handleCreatUser);
   router.put("/api/edit-user", userController.handleEditUser);
-  router.get("/api/delete-user", userController.handleDeleteUser);
+  router.delete("/api/delete-user", userController.handleDeleteUser);
   return app.use("/", router);
 };
 module.exports = initRebRouters;
